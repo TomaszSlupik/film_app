@@ -14,6 +14,7 @@ import axios from '../../axios'
 import axiosFresh from 'axios';
 import {useNavigate} from 'react-router-dom';
 import myKey from '../../user';
+import Alert from '@mui/material/Alert';
 
 
 
@@ -64,16 +65,32 @@ const submit = async (e) => {
     }
     catch {
       console.log('Nie możesz zalogować się')
+      const errorAlert = document.querySelectorAll('.errorAlert')
+      errorAlert.forEach ((el) => {
+          el.style.display = 'flex'
+      })
     }
     
 }
 
+const style = {
+  btn: {
+    backgroundColor: '#3b2774',
+  },
+  error: {
+    display: 'none', marginTop: '1em', flexDirection: 'column'
+  }
+}
+
   return (
-    <div>Rejestracja użytkownika
-        <div className='regiser'>
+    <div>
+        <div className='register'>
+        <div className="register__header">
+        Rejestracja użytkownika
+        </div>
         <TextField
         id="input-with-icon-textfield"
-        label="Użytkownik"
+        label="Podaj e-mail"
         onChange={handleChange('first_input')}
         InputProps={{
           startAdornment: (
@@ -110,9 +127,23 @@ const submit = async (e) => {
        
         <Button 
         onClick={submit}
-        variant="contained">Zarejestruj się</Button>
-      
-        
+        variant="contained"
+        style={style.btn}>Zarejestruj się</Button>
+        <div className="register__alert">
+            <Alert 
+            className='errorAlert'
+            severity="error"
+            style={style.error}
+            >Podaj poprawny e-mail</Alert>
+            
+            <Alert 
+            className='errorAlert'
+            severity="error"
+            style={style.error}
+            >Hasło musi zawierać min. 6 znaków</Alert>
+
+        </div>
+       
         </div>
     </div>
   )
