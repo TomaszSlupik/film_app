@@ -10,7 +10,6 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
 import './Registeruser.scss'
-import axios from '../../axios'
 import axiosFresh from 'axios';
 import {useNavigate} from 'react-router-dom';
 import myKey from '../../user';
@@ -61,7 +60,8 @@ const submit = async (e) => {
         returnSecureToken: true
       })
       console.log('Zalogowany')
-      navigate('/login')
+      console.log(res)
+      navigate('/mainpage')
     }
     catch {
       console.log('Nie możesz zalogować się')

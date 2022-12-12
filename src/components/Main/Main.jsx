@@ -11,7 +11,7 @@ export default function Main() {
 
   const style = {
     btn: {
-      backgroundColor: '#3b2774', marginTop: '0.5em', width: '160px'
+      backgroundColor: '#3b2774', marginTop: '0.5em', width: '165px'
     }
   }
 
